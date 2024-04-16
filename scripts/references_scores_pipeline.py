@@ -9,7 +9,7 @@ from datetime import timedelta
 from pathlib import Path
 from math import*
 from sklearn.model_selection import train_test_split
-from catboost import CatBoostClassifier
+from catboost import CatBoostClassifier, CatBoostError
 import seaborn as sns
 from sklearn import metrics
 from sklearn.metrics import *
@@ -184,9 +184,15 @@ with open(output_path, "w") as f:
             print('Nombre de features X_fi =', len(X_fi))
             X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.2, random_state=42) 
             X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.25, random_state=42)
+            
+            try :
+                clf=CatBoostClassifier(learning_rate=.001, od_type='Iter', n_estimators=n,task_type="GPU",verbose=False,class_weights={0: 1, 1: 2},random_strength= 0, depth=9, l2_leaf_reg=2,gpu_ram_part=0.9, devices='0:1')
+                clf.fit(X_train,y_train,eval_set=(X_val,y_val), use_best_model=True)
 
-            clf=CatBoostClassifier(learning_rate=.001, od_type='Iter', n_estimators=n,task_type="GPU",verbose=False,class_weights={0: 1, 1: 2},random_strength= 0, depth=9, l2_leaf_reg=2,gpu_ram_part=0.9, devices='0:1')
-            clf.fit(X_train,y_train,eval_set=(X_val,y_val), use_best_model=True)
+            except Exception as e:
+                clf=CatBoostClassifier(learning_rate=.001, od_type='Iter', n_estimators=n,task_type="CPU",verbose=False,class_weights={0: 1, 1: 2},random_strength= 0, depth=9, l2_leaf_reg=2)
+                clf.fit(X_train,y_train,eval_set=(X_val,y_val), use_best_model=True)
+
             y_pred=clf.predict_proba(X_test)
 
             selected_feature_names = X_fi_list
