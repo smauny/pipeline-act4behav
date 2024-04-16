@@ -206,7 +206,7 @@ with open(output_path, "w") as f:
             print(f"Model saved to {model_path}")
 
             # Save the table as a CSV file
-            fi.to_csv('feature_importance_'+label+output_file_name+'.csv', index=False)
+            fi.to_csv(home_directory+'/scores_features_models/feature_importance_'+label+output_file_name+'.csv', index=False)
 
 
         print('Nombre de features =', len(X))
