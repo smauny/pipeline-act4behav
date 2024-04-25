@@ -54,7 +54,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This GitHub repository contains a set of Python scripts presented in X to automatically pre-process data and train classification models to detect animal behaviours from accelerometer data. A set of example data is available on: X and is presented in the following datapaper: X.
+This GitHub repository contains a pipeline of Python scripts called ModBehav, presented in the following datapaper X to automatically pre-process data and train classification models to detect animal behaviours from accelerometer data. A set of example data is available on: X and the use of the ModBehav pipeline on this data is presented in the following article: X.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
