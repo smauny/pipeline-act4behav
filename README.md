@@ -54,10 +54,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This GitHub repository contains a pipeline of Python scripts called ModBehav, presented in the following datapaper X to automatically pre-process data and train classification models to detect animal behaviours from accelerometer data. A set of example data is available on: X and the use of the ModBehav pipeline on this data is presented in the following article: X.
+This GitHub repository contains a set of Python scripts presented in X to automatically pre-process data and train classification models to detect animal behaviours from accelerometer data. A set of example data is available on: X and is presented in the following datapaper: X.
+
+This README file provides a step by step guide on how to use this pipeline. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ### Built With
 
@@ -69,19 +70,9 @@ This GitHub repository contains a pipeline of Python scripts called ModBehav, pr
 ## Getting Started
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * Python packages
   ```sh
-  pip install argparse
-  pip install numpy
-  pip install pandas
-  pip install scipy 
-  pip install matplotlib
-  pip install plotly
-  pip install scipy
-  pip install glob2
-  pip install datetime
-  pip install pathlib
+  pip install numpy pandas plotly glob2 scikit-learn catboost seaborn matplotlib tsfresh
   ```
 
 ### Installation
@@ -91,9 +82,12 @@ Clone the repo in your working folder
    git clone https://github.com/smauny/pipeline-modbehav.git
    ```
 
-Or download the repo in your working folder
+### Available data
 
+You can download example data on: 
+This data is presented in our datapaper:
 
+Save the raw data in your working directory in a folder.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -107,7 +101,7 @@ In your terminal, you can start by running the scripts_pipeline.py file
 
 Several questions will be asked. You can answer the questions one by one by following the instructions in the parenthesis and click enter to answer the next question
 
-- **What is the name of the data folder?** Enter the name of the folder in your working directory where your data is located.
+- **What is the name of the data folder?** Enter the name of the folder in your working directory where your raw data is located.
 - **Do you want to filter the data?** Enter yes or no to apply a high-pass filter on the raw acceleration data.
 - **What type of reference vector computation do you want? (median/mean/blank)** Enter the name of the transformation you want to apply to your data. This will create an additional time-serie in your dataset.
 - **What is the cutoff frequency (X.x Hz/blank)?** If you entered 'yes' for the data filter, enter the value of the cutoff frequency.
