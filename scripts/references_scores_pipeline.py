@@ -199,9 +199,6 @@ with open(output_path, "w") as f:
 
             # Save the trained CatBoost model
             model_path = home_directory+'/scores_features_models/'+label+output_file_name+'.cbm'
-            selected_features_path = model_path.replace('.cbm', '_selected_features.txt')
-            with open(selected_features_path, 'w') as feature_file:
-                feature_file.write('\n'.join(selected_feature_names))
             clf.save_model(model_path)
             print(f"Model saved to {model_path}")
 
