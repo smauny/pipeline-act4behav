@@ -117,7 +117,7 @@ Fourth behavior to predict?** Enter the names of the behaviours you want to dete
 <br />
 <div align="center">
   <a href="https://github.com/smauny/pipeline-modbehav/tree/main/images">
-    <img src="https://raw.githubusercontent.com/smauny/pipeline-modbehav/main/images/Screenshot_scripts_pipeline.png" alt="Screenshot" width="600">
+    <img src="https://github.com/smauny/pipeline-modbehav/blob/fdc9a84e1805fee04cc3a677e91f54f18532f0ff/images/Screenshot_scripts_pipeline.png" alt="Screenshot" width="600">
   </a>
 </div>
 
