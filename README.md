@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/smauny/pipeline-modbehav/tree/main/images">
-    <img src="https://raw.githubusercontent.com/smauny/pipeline-modbehav/main/images/Modbehav_logo.png" alt="Logo" width="300" height="200">
+    <img src="[https://raw.githubusercontent.com/smauny/pipeline-modbehav/main/images/Modbehav_logo.png](https://github.com/smauny/pipeline-modbehav/blob/c55afed3d5eb781c031967b531ea6a22ec0dec1c/images/Modbehav_logo.png)" alt="Logo" width="300" height="200">
   </a>
 
 <h3 align="center">ModBehav: a Machine Learning pipeline with extensive pre-processing and feature creation options</h3>
