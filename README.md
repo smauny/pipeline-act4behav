@@ -14,7 +14,7 @@
     <img src="https://github.com/smauny/pipeline-modbehav/blob/c55afed3d5eb781c031967b531ea6a22ec0dec1c/images/Act4behavlogo.png" alt="Logo" width="400" height="300">
   </a>
 
-<h3 align="center">Act4Behav: a Machine Learning pipeline with extensive pre-processing and feature creation options</h3>
+<h3 align="center">ACT4Behav (Accelerometer-based Classification Tool for identifying Behaviours): a Machine Learning pipeline with extensive pre-processing and feature creation options</h3>
 
   <p align="center">
     Python scripts pipeline to detect animal behaviours from accelerometer data 
