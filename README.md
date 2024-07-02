@@ -79,7 +79,7 @@ This README file provides a step by step guide on how to use this pipeline.
 
 Clone the repo in your working folder
    ```sh
-   git clone https://github.com/smauny/pipeline-modbehav.git
+   git clone https://github.com/smauny/pipeline-act4behav.git
    ```
 
 ### Available data
@@ -168,7 +168,7 @@ And datapaper:
 
 Mauny Sarah - sarah.mauny@inrae.fr
 
-Project Link: [https://github.com/smauny/pipeline-modbehav](https://github.com/smauny/pipeline-modbehav)
+Project Link: (https://github.com/smauny/pipeline-act4behav)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
