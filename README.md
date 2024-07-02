@@ -84,7 +84,7 @@ Clone the repo in your working folder
 
 ### Available data
 
-You can download example data on: 
+You can download example data on: https://doi.org/10.57745/LGZBM1 
 This data is presented in our datapaper:
 
 Save the raw data in your working directory in a folder.
