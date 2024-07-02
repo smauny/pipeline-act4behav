@@ -130,10 +130,6 @@ scores=[]
 with open(output_path, "w") as f:
     for label in labels :
 
-        # Skip the label we want to exclude
-        if label == "yes_no_fighting":
-            continue
-
         features_all = features.columns.tolist()
 
         # Get  features
