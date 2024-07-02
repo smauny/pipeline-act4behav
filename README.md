@@ -60,8 +60,10 @@ This README file provides a step by step guide on how to use this pipeline.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Built With
+### Reference
+* <a href="https://zenodo.org/doi/10.5281/zenodo.12624785"><img src="https://zenodo.org/badge/787314370.svg" alt="DOI"></a>
 
+### Built With
 * [![Python][Python.js]][Python-url]
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
