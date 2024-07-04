@@ -54,7 +54,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This GitHub repository contains a set of Python scripts presented in X to automatically pre-process data and train classification models to detect animal behaviours from accelerometer data. A set of example data is available on: X and is presented in the following datapaper: X.
+This GitHub repository contains a set of Python scripts presented in X to automatically pre-process data and train classification models to detect animal behaviours from accelerometer data. A set of example data is available on: https://doi.org/10.57745/LGZBM1 and is presented in the following datapaper (in prep).
 
 This README file provides a step by step guide on how to use this pipeline. 
 
@@ -87,7 +87,7 @@ Clone the repo in your working folder
 ### Available data
 
 You can download example data on: https://doi.org/10.57745/LGZBM1 
-This data is presented in our datapaper:
+This data is presented in our datapaper (in prep).
 
 Save the raw data in your working directory in a folder.
 
@@ -162,8 +162,8 @@ The pipeline creates in output the pre-processed data in a .csv file in the fold
 <!-- MORE -->
 ## More
 
-To have more details on this work, please read our paper:
-And datapaper: 
+To have more details on this work, please read our datapape (in prep).
+And related research article: https://zenodo.org/doi/10.5281/zenodo.12627197 
 
 <!-- CONTACT -->
 ## Contact
