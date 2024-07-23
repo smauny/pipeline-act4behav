@@ -181,7 +181,8 @@ for file in all_files :
     filtered_data = pd.read_csv(file,sep=",")
 
     filtered_data['TIME'] = pd.to_datetime(filtered_data['TIME'])
-
+    filtered_data=filtered_data.dropna()
+    
     t = 0 # count to iterate over the rows 
 
     # Get name of the file
