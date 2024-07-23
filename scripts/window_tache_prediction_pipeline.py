@@ -181,6 +181,9 @@ for file in all_files :
     filtered_data = pd.read_csv(file,sep=",")
 
     filtered_data['TIME'] = pd.to_datetime(filtered_data['TIME'])
+    for column in ['ACCxf', 'ACCyf', 'ACCzf']:
+        filtered_data[column] = pd.to_numeric(filtered_data[column], errors='coerce')
+    
     filtered_data=filtered_data.dropna()
     
     t = 0 # count to iterate over the rows 
