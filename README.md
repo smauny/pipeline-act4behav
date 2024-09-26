@@ -89,7 +89,7 @@ Clone the repo in your working folder
 You can download example data on: https://doi.org/10.57745/LGZBM1 
 This data is presented in our datapaper (in prep).
 
-Save the raw data in your working directory in a folder.
+Save the raw data in a folder in the pipeline-act4behav folder.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
