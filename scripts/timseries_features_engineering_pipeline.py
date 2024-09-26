@@ -128,7 +128,8 @@ for col in timeseries_part1.columns:
     if not os.path.exists(path_running):
         os.makedirs(path_running, exist_ok=True)
         os.makedirs(path_running+'/timeseries1', exist_ok=True)
-    extracted_features1.to_csv(f'~/scripts/running/timeseries1/extracted_features_part1_{col}.csv')
+    extracted_features1.to_csv(f"{home_directory}/scripts/running/timeseries1/extracted_features_part1_{col}.csv")
+
 
 
 
@@ -160,7 +161,7 @@ for col in timeseries_part2.columns:
     path_timeseries2=home_directory+'/scripts/running/timeseries2'
     if not os.path.exists(path_timeseries2):
         os.makedirs(path_timeseries2, exist_ok=True)
-    extracted_features2.to_csv(f'~/scripts/running/timeseries2/extracted_features_part2_{col}.csv')
+    extracted_features2.to_csv(f"{home_directory}/scripts/running/timeseries2/extracted_features_part2_{col}.csv")
 
 extracted_features_concatenated2 = None
 for col in timeseries_part2.columns:
