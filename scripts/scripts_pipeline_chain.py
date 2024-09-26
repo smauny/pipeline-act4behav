@@ -9,15 +9,15 @@ home_directory = current_working_directory[:scripts_position].rstrip(os.sep)
 
 # Define the list of script names in the desired execution order
 script_names = [
-    "scripts/application_filter_pipeline.py",
-    "scripts/window_tache_prediction_pipeline.py",
-    "scripts/euler_angles_pipeline.py",
-    "scripts/timseries_features_engineering_pipeline.py",
-    "scripts/references_scores_pipeline.py"
+    "/scripts/application_filter_pipeline.py",
+    "/scripts/window_tache_prediction_pipeline.py",
+    "/scripts/euler_angles_pipeline.py",
+    "/scripts/timseries_features_engineering_pipeline.py",
+    "/scripts/references_scores_pipeline.py"
 ]
 
 # Complete paths for each script
-script_paths = [os.path.join(home_directory, script_name) for script_name in script_names]
+script_paths = [os.path.join(home_directory+ script_name) for script_name in script_names]
 
 
 # Define the list of arguments for the entire pipeline
@@ -44,8 +44,8 @@ for arg in pipeline_arguments:
 
 args = parser.parse_args()
 
-for script_name in script_paths:
-    command = ["python3", script_name]
+for script_path in script_paths:
+    command = ["python3", script_path]
     for arg in pipeline_arguments:
         arg_value = getattr(args, arg["name"])
         command.extend([f"--{arg['name']}", arg_value])
