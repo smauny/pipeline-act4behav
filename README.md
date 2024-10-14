@@ -130,10 +130,10 @@ If you want to execute multiple runs automatically, you can open and modify the 
 
    ```sh
    pipeline_runs = [
-    {"id_expe": "adapt", "filter": "no", "reference_vector_computation": "mean", "cutoff_hz": "", "freq_measure": "5", "time_windows": "10", "euler_angles": "yes", "features_selection": ""},
-    {"id_expe": "adapt", "filter": "no", "reference_vector_computation": "mean", "cutoff_hz": "", "freq_measure": "5", "time_windows": "20", "euler_angles": "yes", "features_selection": ""},
-    {"id_expe": "adapt", "filter": "no", "reference_vector_computation": "mean", "cutoff_hz": "", "freq_measure": "5", "time_windows": "30", "euler_angles": "yes", "features_selection": ""},
-    {"id_expe": "adapt", "filter": "no", "reference_vector_computation": "mean", "cutoff_hz": "", "freq_measure": "5", "time_windows": "40", "euler_angles": "yes", "features_selection": ""}
+    {"id_expe": "adapt", "filter": "no", "reference_vector_computation": "mean", "cutoff_hz": "", "freq_measure": "5", "time_windows": "10", "euler_angles": "yes", "features_selection": "", "behavior1": "ruminating", "behavior2": "feeder", "behavior3": "standing", "behavior4": "lying"},
+    {"id_expe": "adapt", "filter": "no", "reference_vector_computation": "mean", "cutoff_hz": "", "freq_measure": "5", "time_windows": "20", "euler_angles": "yes", "features_selection": "", "behavior1": "ruminating", "behavior2": "feeder", "behavior3": "standing", "behavior4": "lying"},
+    {"id_expe": "adapt", "filter": "no", "reference_vector_computation": "mean", "cutoff_hz": "", "freq_measure": "5", "time_windows": "30", "euler_angles": "yes", "features_selection": "", "behavior1": "ruminating", "behavior2": "feeder", "behavior3": "standing", "behavior4": "lying"},
+    {"id_expe": "adapt", "filter": "no", "reference_vector_computation": "mean", "cutoff_hz": "", "freq_measure": "5", "time_windows": "40", "euler_angles": "yes", "features_selection": "", "behavior1": "ruminating", "behavior2": "feeder", "behavior3": "standing", "behavior4": "lying"}
 ]
    ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
