@@ -97,7 +97,7 @@ Save the raw data in a folder in the pipeline-act4behav folder.
 In your terminal, you can start by running the scripts_pipeline.py file
 
    ```sh
-   python3 /your/working/directory/scripts/scripts_pipeline.py
+   python3 /your/working/directory/pipeline-act4behav/scripts/scripts_pipeline.py
    ```
 
 
