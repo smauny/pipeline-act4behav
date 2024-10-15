@@ -228,10 +228,10 @@ with open(output_path, "w") as f:
             accuracy_scores.append(accuracy)
 
         # Convert the list to a numpy array for easy manipulation
-        accuracy_scores = np.array(accuracy_scores)
-        best_threshold_index = np.argmax(accuracy_scores)
+        accuracy_array = np.array(accuracy_scores)
+        best_threshold_index = np.argmax(accuracy_array)
         best_threshold = np.arange(0.00, 1.00, 0.01)[best_threshold_index]
-        best_accuracy = accuracy_scores[best_threshold_index]
+        best_accuracy = accuracy_array[best_threshold_index]
        
         # Balanced Accuracy
         balanced_accuracy = balanced_accuracy_score(y_test, chosen_predictions)
