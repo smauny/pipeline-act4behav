@@ -81,7 +81,7 @@ This README file provides a step by step guide on how to use this pipeline.
 
 Clone the repo in your working folder
    ```sh
-   git clone https://github.com/your-repo/pipeline-act4behav.git
+   git clone https://github.com/pipeline-act4behav.git
    ```
 
 ### Available data
