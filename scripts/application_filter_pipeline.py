@@ -31,6 +31,7 @@ parser.add_argument("--behavior1", help="First behavior to predict")
 parser.add_argument("--behavior2", help="Second behavior to predict", nargs='?', default=None)
 parser.add_argument("--behavior3", help="Third behavior to predict", nargs='?', default=None)
 parser.add_argument("--behavior4", help="Fourth behavior to predict", nargs='?', default=None)
+parser.add_argument("--processes", type=int, help="Processes parallelization")
 
 # Analysez les arguments de ligne de commande
 args = parser.parse_args()
@@ -44,6 +45,7 @@ reference_vector_computation = args.reference_vector_computation if args.referen
 cutoff_hz = args.cutoff_hz
 freq_measure = args.freq_measure
 features_selection = args.features_selection
+processes = args.processes
 
 current_working_directory = os.path.abspath(__file__)
 scripts_position = current_working_directory.find('scripts')
