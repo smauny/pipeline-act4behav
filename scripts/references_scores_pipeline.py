@@ -61,7 +61,7 @@ scripts_position = current_working_directory.find('scripts')
 home_directory = current_working_directory[:scripts_position].rstrip(os.sep)
 
 behaviours = [behavior1,behavior2,behavior3,behavior4]
-behaviours_names = '_'.join(behaviours)
+behaviours_names = '_'.join(sorted(behaviours))
 
 features_parameters = "EfficientFCParameters"
 if reference_vector_computation=='' :
