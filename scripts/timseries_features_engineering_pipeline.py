@@ -58,7 +58,7 @@ processes = args.processes
 
 features_parameters = EfficientFCParameters() #MinimalFCParameters(), EfficientFCParameters(), ComprehensiveFCParameters() or None
 behaviours = [behavior1,behavior2,behavior3,behavior4]
-behaviours_names = '_'.join(behaviours)
+behaviours_names = '_'.join(sorted(behaviours))
 
 current_working_directory = os.path.abspath(__file__)
 scripts_position = current_working_directory.find('scripts')
