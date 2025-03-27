@@ -15,6 +15,7 @@ from pathlib import Path
 from math import*
 import re
 import argparse
+from multiprocessing import Pool
 
 
 # Créez un objet ArgumentParser
@@ -120,7 +121,7 @@ if file_exists:
     exit()
 
 # Functions
-def count_behavior(behavior,category) :
+def count_behavior(behavior, category, window, df, df_count):
 
     category_behavior = category
     window_count=0
@@ -142,11 +143,11 @@ def count_behavior(behavior,category) :
 def find_behavior_categories(raw_data, specified_behaviors, behavior_columns):
     behavior_categories = {}
     for behavior in specified_behaviors:
-        found = False  
+        # found variable is unused, removing it
         for column in behavior_columns:
             if behavior in raw_data[column].unique():
                 behavior_categories[behavior] = column
-                found = True
+                # found variable is unused, removing it
                 break  
     return behavior_categories
 
@@ -160,12 +161,14 @@ filtered_data['TIME'] = pd.to_datetime(filtered_data['TIME'])
 
 specified_behaviors = [args.behavior1, args.behavior2, args.behavior3, args.behavior4]
 behavior_columns = filtered_data.columns.tolist()
-behavior_categories = find_behavior_categories(filtered_data, specified_behaviors, behavior_columns)
-category1 = behavior_categories.get(args.behavior1)
-category2 = behavior_categories.get(args.behavior2)
-category3 = behavior_categories.get(args.behavior3)
-category4 = behavior_categories.get(args.behavior4)
-category_columns = behavior_categories.values()
+
+if len(filtered_data.columns) >= 7 :
+    behavior_categories = find_behavior_categories(filtered_data, specified_behaviors, behavior_columns)
+    category1 = behavior_categories.get(args.behavior1)
+    category2 = behavior_categories.get(args.behavior2)
+    category3 = behavior_categories.get(args.behavior3)
+    category4 = behavior_categories.get(args.behavior4)
+    category_columns = behavior_categories.values()
 
 start_milking_morning=filtered_data.iloc[filtered_data.shape[0]-1]['TIME'] + timedelta(days=2) 
 end_milking_morning=filtered_data.iloc[0]['TIME'] - timedelta(days=2)
@@ -175,35 +178,23 @@ end_milking_after=filtered_data.iloc[0]['TIME'] - timedelta(days=2)
 df_count=0
 nb_lines=time_windows*freq_measure
 
-# Loop
-for file in all_files :
-    
-    filtered_data = pd.read_csv(file,sep=",")
-
+def process_file(file):
+    filtered_data = pd.read_csv(file, sep=",")
     filtered_data['TIME'] = pd.to_datetime(filtered_data['TIME'])
     for column in ['ACCxf', 'ACCyf', 'ACCzf']:
         filtered_data[column] = pd.to_numeric(filtered_data[column], errors='coerce')
-    
-    filtered_data=filtered_data.dropna()
-    
-    t = 0 # count to iterate over the rows 
+    filtered_data = filtered_data.dropna()
 
-    # Get name of the file
-    beginning_name = file.find(id_expe+"_")
-    end_name=file.find(".csv")
-    name_total=file[beginning_name:end_name]
-
+    t = 0
     idchevre = str(filtered_data['idgoat'][0])
-
-    # New colum (norm)
     filtered_data['norm'] = np.sqrt(filtered_data['ACCxf']**2 + filtered_data['ACCyf']**2 + filtered_data['ACCzf']**2)
 
-    # Iteration over the rows to create windows 
-    while t < filtered_data.shape[0] : 
+    local_df = pd.DataFrame()
+    local_df1 = pd.DataFrame()
 
-        window = filtered_data.iloc[t:(t+nb_lines),:] # creates a window of nb_lines acceleration measures (i.e. about time_windows s)
-
-        df1_window=pd.DataFrame() 
+    while t < filtered_data.shape[0]:
+        window = filtered_data.iloc[t:(t + nb_lines), :]
+        df1_window = pd.DataFrame()
         mycolumns = []
         columns_to_check = ['TIME', 'ACCxf', 'ACCyf', 'ACCzf', 'norm', 'ACCxf_r', 'ACCyf_r', 'ACCzf_r']
 
@@ -213,32 +204,36 @@ for file in all_files :
                 mycolumns.append(col_loc)
             except KeyError:
                 pass
-            
-        df1_window=filtered_data.iloc[t:(t+nb_lines),mycolumns] # creates a window of nb_lines acceleration measures (i.e. about time_windows s) with selected columns 
-    
-        
-        if all(category in filtered_data.columns for category in category_columns):
-            # Count behaviors in the "window" df
-            count_behavior(behavior1, category1)
-            count_behavior(behavior2, category2)
-            count_behavior(behavior3, category3)
-            count_behavior(behavior4, category4)
 
-        # Add beginning time of the window and goat id
-        df.loc[df_count,'start_window'] = filtered_data.iloc[t]['TIME']
-        df.loc[df_count,'start_window_id'] = str(str(filtered_data.iloc[t]['TIME']) + '_' + str(idchevre)).replace(" ", "_")
+        df1_window = filtered_data.iloc[t:(t + nb_lines), mycolumns]
 
-        df1_window.loc[:,'start_window'] = filtered_data.iloc[t]['TIME']
-        df1_window.loc[:,'start_window_id'] = str(str(filtered_data.iloc[t]['TIME']) + '_' + str(idchevre)).replace(" ", "_")
-        df1_window.loc[:,'id_goat'] = idchevre
+        if len(filtered_data.columns) >= 8 :
+            count_behavior(behavior1, category1, window, local_df, df_count)
+            count_behavior(behavior2, category2, window, local_df, df_count)
+            count_behavior(behavior3, category3, window, local_df, df_count)
+            count_behavior(behavior4, category4, window, local_df, df_count)
 
-        df_count+=1
-        df1=pd.concat([df1, df1_window]).reset_index(drop=True)
+        local_df.loc[len(local_df), 'start_window'] = filtered_data.iloc[t]['TIME']
+        local_df.loc[len(local_df) - 1, 'start_window_id'] = str(str(filtered_data.iloc[t]['TIME']) + '_' + str(idchevre)).replace(" ", "_")
+
+        df1_window.loc[:, 'start_window'] = filtered_data.iloc[t]['TIME']
+        df1_window.loc[:, 'start_window_id'] = str(str(filtered_data.iloc[t]['TIME']) + '_' + str(idchevre)).replace(" ", "_")
+        df1_window.loc[:, 'id_goat'] = idchevre
+
+        local_df1 = pd.concat([local_df1, df1_window]).reset_index(drop=True)
         t = t + nb_lines
 
+    return local_df, local_df1
+
+with Pool(processes=7) as pool:
+    results = pool.map(process_file, all_files)
+
+# Concatenate results from all processes
+df = pd.concat([result[0] for result in results]).reset_index(drop=True)
+df1 = pd.concat([result[1] for result in results]).reset_index(drop=True)
 
 # Write csv / excel
-if all(category in filtered_data.columns for category in category_columns):
+if len(filtered_data.columns) >= 8 :
     filepath = Path(path +'/'+str(time_windows)+'s_window/'+id_expe+'_'+reference_vector_computation+filter+'_'+cutoff_hz_str+behavior1+'_'+behavior2+'_'+behavior3+'_'+behavior4+'_'+str(time_windows)+'s.csv')
     filepath.parent.mkdir(parents=True, exist_ok=True)  
     df.to_csv(filepath) 
