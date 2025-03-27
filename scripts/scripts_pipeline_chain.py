@@ -33,7 +33,8 @@ pipeline_arguments = [
     {"name": "behavior1", "question": "First behavior to predict? "},
     {"name": "behavior2", "question": "Second behavior to predict? "},
     {"name": "behavior3", "question": "Third behavior to predict? "},
-    {"name": "behavior4", "question": "Fourth behavior to predict? "}
+    {"name": "behavior4", "question": "Fourth behavior to predict? "},
+    {"name": "processes", "question": "For parallelization, how many processes do you want to use? "}
 
 ]
 
