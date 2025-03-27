@@ -34,6 +34,7 @@ parser.add_argument("--behavior1", help="First behavior to predict")
 parser.add_argument("--behavior2", help="Second behavior to predict", nargs='?', default=None)
 parser.add_argument("--behavior3", help="Third behavior to predict", nargs='?', default=None)
 parser.add_argument("--behavior4", help="Fourth behavior to predict", nargs='?', default=None)
+parser.add_argument("--processes", type=int, help="Processes parallelization")
 
 
 # Analysez les arguments de ligne de commande
@@ -48,6 +49,7 @@ reference_vector_computation = args.reference_vector_computation if args.referen
 cutoff_hz = args.cutoff_hz if args.cutoff_hz else ""
 freq_measure = args.freq_measure
 features_selection = args.features_selection
+processes=args.processes
 
 behavior1 = args.behavior1
 behavior2 = args.behavior2
@@ -225,7 +227,7 @@ def process_file(file):
 
     return local_df, local_df1
 
-with Pool(processes=7) as pool:
+with Pool(processes=processes) as pool:
     results = pool.map(process_file, all_files)
 
 # Concatenate results from all processes
