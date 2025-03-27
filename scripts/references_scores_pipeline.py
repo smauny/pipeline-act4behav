@@ -36,6 +36,7 @@ parser.add_argument("--behavior1", help="First behavior to predict")
 parser.add_argument("--behavior2", help="Second behavior to predict", nargs='?', default=None)
 parser.add_argument("--behavior3", help="Third behavior to predict", nargs='?', default=None)
 parser.add_argument("--behavior4", help="Fourth behavior to predict", nargs='?', default=None)
+parser.add_argument("--processes", type=int, help="Processes parallelization")
 
 # Analysez les arguments de ligne de commande
 args = parser.parse_args()
@@ -53,6 +54,7 @@ behavior1 = args.behavior1
 behavior2 = args.behavior2
 behavior3 = args.behavior3
 behavior4 = args.behavior4
+processes=args.processes
 
 current_working_directory = os.path.abspath(__file__)
 scripts_position = current_working_directory.find('scripts')
