@@ -60,7 +60,7 @@ behavior3 = args.behavior3
 behavior4 = args.behavior4
 
 behaviours = [behavior1,behavior2,behavior3,behavior4]
-behaviours_names = '_'.join(behaviours)
+behaviours_names = '_'.join(sorted(behaviours))
 
 if euler_angles=='yes' :
     euler_angles='_euler_angles'
